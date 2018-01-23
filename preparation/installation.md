@@ -54,7 +54,7 @@ $ sudo pip3 install --upgrade https://storage.googleapis.com/tensorflow/mac/tens
 
 ## 基于 Docker 的安装
 
-我们也支持通过 [Docker](http://docker.com/) 运行 TensorFlow.   
+我们也支持通过 [Docker](http://docker.com/) 运行 TensorFlow.  
 该方式的优点是不用操心软件依赖问题.
 
 首先, [安装 Docker](http://docs.docker.com/engine/installation/). 一旦 Docker  
@@ -354,7 +354,7 @@ $ bazel-bin/tensorflow/cc/tutorials_example_trainer --use_gpu
 * 尽管可以在同一个源码树下编译开启 Cuda 支持和禁用 Cuda 支持的版本, 我们还是推荐在  
   在切换这两种不同的编译配置时, 使用 "bazel clean" 清理环境.
 
-* 在执行 bazel 编译前必须先运行 configure, 否则编译会失败并提示错误信息. 未来,   
+* 在执行 bazel 编译前必须先运行 configure, 否则编译会失败并提示错误信息. 未来,  
   我们可能考虑将 configure 步骤包含在编译过程中, 以简化整个过程, 前提是 bazel 能够提供新的特性支持这样.
 
 ### Mac OS X 安装
