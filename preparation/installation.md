@@ -4,11 +4,11 @@
 
 ## Pip 安装
 
-[Pip](https://en.wikipedia.org/wiki/Pip_(package_manager)) 是一个 Python 的软件包安装与管理工具.
+\[Pip\]\([https://en.wikipedia.org/wiki/Pip\_\(package\_manager](https://en.wikipedia.org/wiki/Pip_%28package_manager)\)\) 是一个 Python 的软件包安装与管理工具.
 
 在安装 TensorFlow 过程中要涉及安装或升级的包详见 [列表](https://github.com/tensorflow/tensorflow/blob/master/tensorflow/tools/pip_package/setup.py)
 
-首先安装 pip (或 Python3 的 pip3 ):
+首先安装 pip \(或 Python3 的 pip3 \):
 
 ```bash
 # Ubuntu/Linux 64-bit
@@ -48,16 +48,16 @@ $ sudo easy_install --upgrade six
 $ sudo pip3 install --upgrade https://storage.googleapis.com/tensorflow/mac/tensorflow-0.8.0-py3-none-any.whl
 ```
 
-备注：如果之前安装过 TensorFlow < 0.7.1 的版本,应该先使用 `pip uninstall` 卸载 TensorFlow 和 protobuf ,保证获取的是一个最新 protobuf 依赖下的安装包.
+备注：如果之前安装过 TensorFlow &lt; 0.7.1 的版本,应该先使用 `pip uninstall` 卸载 TensorFlow 和 protobuf ,保证获取的是一个最新 protobuf 依赖下的安装包.
 
 之后可以[测试](https://github.com/tensorflow/tensorflow/blob/master/tensorflow/g3doc/get_started/os_setup.md#test-the-tensorflow-installation)一下.
 
 ## 基于 Docker 的安装
 
-我们也支持通过 [Docker](http://docker.com/) 运行 TensorFlow. 
+我们也支持通过 [Docker](http://docker.com/) 运行 TensorFlow.   
 该方式的优点是不用操心软件依赖问题.
 
-首先, [安装 Docker](http://docs.docker.com/engine/installation/). 一旦 Docker
+首先, [安装 Docker](http://docs.docker.com/engine/installation/). 一旦 Docker  
 已经启动运行, 可以通过命令启动一个容器:
 
 ```bash
@@ -68,13 +68,13 @@ $ docker run -it b.gcr.io/tensorflow/tensorflow
 
 ### 其它镜像
 
-默认的 Docker 镜像只包含启动和运行 TensorFlow 所需依赖库的一个最小集. 我们额外提供了
+默认的 Docker 镜像只包含启动和运行 TensorFlow 所需依赖库的一个最小集. 我们额外提供了  
 下面的容器, 该容器同样可以通过上述 `docker run` 命令安装:
 
 * `b.gcr.io/tensorflow/tensorflow-full`: 镜像中的 TensorFlow 是从源代码完整安装的,
   包含了编译和运行 TensorFlow 所需的全部工具. 在该镜像上, 可以直接使用源代码进行实验,
   而不需要再安装上述的任何依赖.
- 
+
 ## 基于 VirtualEnv 的安装
 
 我们推荐使用 [virtualenv](https://pypi.python.org/pypi/virtualenv) 创建一个隔离的容器, 来安装 TensorFlow. 这是可选的, 但是这样做能使排查安装问题变得更容易.
@@ -90,7 +90,7 @@ $ sudo easy_install pip  # 如果还没有安装 pip
 $ sudo pip install --upgrade virtualenv
 ```
 
-接下来, 建立一个全新的 virtualenv 环境. 为了将环境建在 `~/tensorflow`
+接下来, 建立一个全新的 virtualenv 环境. 为了将环境建在 `~/tensorflow`  
 目录下, 执行:
 
 ```bash
@@ -193,7 +193,7 @@ conda 环境激活后,你可以[测试](https://github.com/tensorflow/tensorflow
 $  # Your prompt should change back
 ```
 
-再次使用的时候再激活 :-)
+再次使用的时候再激活 :-\)
 
 ```bash
 $ source activate tensorflow
@@ -204,17 +204,15 @@ $ source activate tensorflow
 (tensorflow)$ source deactivate
 ```
 
-
-
 ## 尝试你的第一个 TensorFlow 程序
 
-### (可选) 启用 GPU 支持
+### \(可选\) 启用 GPU 支持
 
-如果你使用 pip 二进制包安装了开启 GPU 支持的 TensorFlow, 你必须确保
+如果你使用 pip 二进制包安装了开启 GPU 支持的 TensorFlow, 你必须确保  
 系统里安装了正确的 CUDA sdk 和 CUDNN 版本. 请参间  [CUDA 安装教程](#install_cuda)
 
-你还需要设置 `LD_LIBRARY_PATH` 和 `CUDA_HOME` 环境变量. 可以考虑将下面的命令
-添加到 `~/.bash_profile` 文件中, 这样每次登陆后自动生效. 注意, 下面的命令
+你还需要设置 `LD_LIBRARY_PATH` 和 `CUDA_HOME` 环境变量. 可以考虑将下面的命令  
+添加到 `~/.bash_profile` 文件中, 这样每次登陆后自动生效. 注意, 下面的命令  
 假定 CUDA 安装目录为 `/usr/local/cuda`:
 
 ```bash
@@ -239,7 +237,6 @@ Hello, TensorFlow!
 >>> print sess.run(a+b)
 42
 >>>
-
 ```
 
 ## 从源码安装
@@ -256,8 +253,8 @@ $ git clone --recurse-submodules https://github.com/tensorflow/tensorflow
 
 #### 安装 Bazel
 
-首先依照 [教程](http://bazel.io/docs/install.html) 安装 Bazel 的依赖.
-然后在 [链接](https://github.com/bazelbuild/bazel/releases) 中下载适合你的操作系统的最新稳定版,
+首先依照 [教程](http://bazel.io/docs/install.html) 安装 Bazel 的依赖.  
+然后在 [链接](https://github.com/bazelbuild/bazel/releases) 中下载适合你的操作系统的最新稳定版,  
 最后按照下面脚本执行：
 
 ```bash
@@ -278,12 +275,12 @@ $ sudo apt-get install python-numpy swig python-dev python-wheel
 $ sudo apt-get install python3-numpy swig python3-dev python3-wheel
 ```
 
-#### 可选: 安装 CUDA (在 Linux 上开启 GPU 支持)
+#### 可选: 安装 CUDA \(在 Linux 上开启 GPU 支持\)
 
-为了编译并运行能够使用 GPU 的 TensorFlow, 需要先安装 NVIDIA 提供的 Cuda Toolkit 7.0
+为了编译并运行能够使用 GPU 的 TensorFlow, 需要先安装 NVIDIA 提供的 Cuda Toolkit 7.0  
 和 CUDNN 6.5 V2.
 
-TensorFlow 的 GPU 特性只支持 NVidia Compute Capability >= 3.5 的显卡. 被支持的显卡
+TensorFlow 的 GPU 特性只支持 NVidia Compute Capability &gt;= 3.5 的显卡. 被支持的显卡  
 包括但不限于:
 
 * NVidia Titan
@@ -301,10 +298,10 @@ TensorFlow 的 GPU 特性只支持 NVidia Compute Capability >= 3.5 的显卡. �
 
 [下载地址](https://developer.nvidia.com/rdp/cudnn-archive)
 
-解压并拷贝 CUDNN 文件到 Cuda Toolkit 7.0 安装路径下. 假设 Cuda Toolkit 7.0 安装
+解压并拷贝 CUDNN 文件到 Cuda Toolkit 7.0 安装路径下. 假设 Cuda Toolkit 7.0 安装  
 在 `/usr/local/cuda`, 执行以下命令:
 
-``` bash
+```bash
 tar xvzf cudnn-6.5-linux-x64-v2.tgz
 sudo cp cudnn-6.5-linux-x64-v2/cudnn.h /usr/local/cuda/include
 sudo cp cudnn-6.5-linux-x64-v2/libcudnn* /usr/local/cuda/lib64
@@ -314,7 +311,7 @@ sudo cp cudnn-6.5-linux-x64-v2/libcudnn* /usr/local/cuda/lib64
 
 从源码树的根路径执行:
 
-``` bash
+```bash
 $ ./configure
 Do you wish to bulid TensorFlow with GPU support? [y/n] y
 GPU support will be enabled for TensorFlow
@@ -332,7 +329,7 @@ Setting up Cuda nvvm
 Configuration finished
 ```
 
-这些配置将建立到系统 Cuda 库的符号链接. 每当 Cuda 库的路径发生变更时, 必须重新执行上述
+这些配置将建立到系统 Cuda 库的符号链接. 每当 Cuda 库的路径发生变更时, 必须重新执行上述  
 步骤, 否则无法调用 bazel 编译命令.
 
 ##### 编译目标程序, 开启 GPU 支持
@@ -354,15 +351,15 @@ $ bazel-bin/tensorflow/cc/tutorials_example_trainer --use_gpu
 
 ##### 已知问题
 
-* 尽管可以在同一个源码树下编译开启 Cuda 支持和禁用 Cuda 支持的版本, 我们还是推荐在
-在切换这两种不同的编译配置时, 使用 "bazel clean" 清理环境.
+* 尽管可以在同一个源码树下编译开启 Cuda 支持和禁用 Cuda 支持的版本, 我们还是推荐在  
+  在切换这两种不同的编译配置时, 使用 "bazel clean" 清理环境.
 
-* 在执行 bazel 编译前必须先运行 configure, 否则编译会失败并提示错误信息. 未来, 
-我们可能考虑将 configure 步骤包含在编译过程中, 以简化整个过程, 前提是 bazel 能够提供新的特性支持这样. 
+* 在执行 bazel 编译前必须先运行 configure, 否则编译会失败并提示错误信息. 未来,   
+  我们可能考虑将 configure 步骤包含在编译过程中, 以简化整个过程, 前提是 bazel 能够提供新的特性支持这样.
 
 ### Mac OS X 安装
 
-Mac 和 Linux 需要的软件依赖完全一样, 但是安装过程区别很大. 以下链接用于帮助你
+Mac 和 Linux 需要的软件依赖完全一样, 但是安装过程区别很大. 以下链接用于帮助你  
 在 Mac OS X 上安装这些依赖:
 
 #### Bazel
@@ -373,8 +370,8 @@ Mac 和 Linux 需要的软件依赖完全一样, 但是安装过程区别很大.
 
 [Mac OS X 安装教程](http://www.swig.org/Doc3.0/Preface.html#Preface_osx_installation).
 
-注意: 你需要安装[PCRE](ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/),
-而*不是* PCRE2.
+注意: 你需要安装[PCRE](ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/),  
+而_不是_ PCRE2.
 
 #### Numpy
 
@@ -454,23 +451,22 @@ import six.moves.copyreg as copyreg
 ImportError: No module named copyreg
 ```
 
-解决方案: TensorFlow 使用的 protobuf 依赖 `six-1.10.0`. 但是, Apple 的默认 python 环境
+解决方案: TensorFlow 使用的 protobuf 依赖 `six-1.10.0`. 但是, Apple 的默认 python 环境  
 已经安装了 `six-1.4.1`, 该版本可能很难升级. 这里提供几种方法来解决该问题:
 
 1. 升级全系统的 `six`:
 
-    ```bash
+   ```bash
     sudo easy_install -U six
-    ```
+   ```
 
 2. 通过 homebrew 安装一个隔离的 python 副本:
 
-    ```bash
+   ```bash
     brew install python
-    ```
+   ```
 
 3. 在[`virtualenv`](#virtualenv_install) 内编译或使用 TensorFlow.
-
 
 如果出现错误:
 
@@ -488,10 +484,13 @@ Traceback (most recent call last):
 TypeError: __init__() got an unexpected keyword argument 'syntax'
 ```
 
-这是由于安装了冲突的 protobuf 版本引起的, TensorFlow 需要的是 protobuf 3.0.0. 当前
-最好的解决方案是确保没有安装旧版本的 protobuf, 可以使用以下命令重新安装 protobuf 来解决
-冲突: 
+这是由于安装了冲突的 protobuf 版本引起的, TensorFlow 需要的是 protobuf 3.0.0. 当前  
+最好的解决方案是确保没有安装旧版本的 protobuf, 可以使用以下命令重新安装 protobuf 来解决  
+冲突:
 
 ```bash
 brew reinstall --devel protobuf
 ```
+
+
+
