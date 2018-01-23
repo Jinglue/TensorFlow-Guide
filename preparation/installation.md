@@ -1,4 +1,4 @@
-# 下载与安装
+# 安装 TensorFlow
 
 你可以使用我们提供的 Pip, Docker, Virtualenv, Anaconda 或 源码编译的方法安装 TensorFlow.
 
