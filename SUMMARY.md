@@ -2,7 +2,7 @@
 * [准备工作](preparation/README.md)
 	* [安装 TensorFlow](preparation/installation.md)
 * [开始使用](get_started/README.md)
-	* [TensorFlow 使用入门](get_started/tensorflow_intro.md)
+	* [TensorFlow 使用入门](get_started/tf_intro.md)
 	* [面向机器学习新手的 MNIST](get_started/mnist_for_beginner.md)
 	* [面向专家的深度 MNIST](get_started/mnist_for_experts.md)
 	* [TensorFlow 运行机制基础知识](get_started/tensorflow_mechanics.md)
