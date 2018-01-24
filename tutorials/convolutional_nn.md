@@ -7,7 +7,7 @@
 对CIFAR-10 数据集的分类是机器学习中一个公开的基准测试问题，其任务是对一组大小为32x32的RGB图像进行分类，这些图像涵盖了10个类别：  
 ```飞机， 汽车， 鸟， 猫， 鹿， 狗， 青蛙， 马， 船以及卡车。```
 
-![CIFAR-10 Samples](../images/cifar_samples.png "CIFAR-10 Samples, from http://www.cs.toronto.edu/~kriz/cifar.html")
+![CIFAR-10 Samples](images/convolutional_nn_1.png "CIFAR-10 Samples, from http://www.cs.toronto.edu/~kriz/cifar.html")
 
 想了解更多信息请参考[CIFAR-10 page](http://www.cs.toronto.edu/~kriz/cifar.html)，以及Alex Krizhevsky写的[技术报告](http://www.cs.toronto.edu/~kriz/learning-features-2009-TR.pdf)  
 
@@ -22,11 +22,11 @@
 
 ### 本教程的重点
 CIFAR-10 教程演示了在TensorFlow上构建更大更复杂模型的几个种重要内容：  
-* 相关核心数学对象，如[卷积](https://github.com/jikexueyuanwiki/tensorflow-zh/blob/master/SOURCE/api_docs/python/nn.md#conv2d)、[修正线性激活](https://github.com/jikexueyuanwiki/tensorflow-zh/blob/master/SOURCE/api_docs/python/nn.md#relu)、[最大池化](https://github.com/jikexueyuanwiki/tensorflow-zh/blob/master/SOURCE/api_docs/python/nn.md#max_pool)以及[局部响应归一化](https://github.com/jikexueyuanwiki/tensorflow-zh/blob/master/SOURCE/api_docs/python/nn.md#local_response_normalization)；  
-* 训练过程中一些网络行为的[可视化](https://github.com/jikexueyuanwiki/tensorflow-zh/tree/master/SOURCE/how_tos/summaries_and_tensorboard/index.md)，这些行为包括输入图像、损失情况、网络行为的分布情况以及梯度；  
-* 算法学习参数的[移动平均值](https://github.com/jikexueyuanwiki/tensorflow-zh/blob/master/SOURCE/api_docs/python/train.md#ExponentialMovingAverage)的计算函数，以及在评估阶段使用这些平均值提高预测性能；  
-* 实现了一种机制，使得[学习率](https://github.com/jikexueyuanwiki/tensorflow-zh/blob/master/SOURCE/api_docs/python/train.md#exponential_decay)随着时间的推移而递减；  
-* 为输入数据设计预存取[队列](https://github.com/jikexueyuanwiki/tensorflow-zh/blob/master/SOURCE/api_docs/python/io_ops.md#shuffle_batch)，将磁盘延迟和高开销的图像预处理操作与模型分离开来处理；  
+* 相关核心数学对象，如卷积、修正线性激活、最大池化以及局部响应归一化  
+* 训练过程中一些网络行为的可视化，这些行为包括输入图像、损失情况、网络行为的分布情况以及梯度  
+* 算法学习参数的移动平均值的计算函数，以及在评估阶段使用这些平均值提高预测性能  
+* 实现了一种机制，使得学习率随着时间的推移而递减  
+* 为输入数据设计预存取队列，将磁盘延迟和高开销的图像预处理操作与模型分离开来处理  
 
 我们也提供了模型的多GPU版本，用以表明：  
 * 可以配置模型后使其在多个GPU上并行的训练  
@@ -65,26 +65,26 @@ adds operations that perform inference, i.e. classification, on supplied images.
 
 ### 模型输入
 
-输入模型是通过 `inputs()` 和`distorted_inputs()`函数建立起来的，这2个函数会从CIFAR-10二进制文件中读取图片文件，由于每个图片的存储字节数是固定的，因此可以使用[`tf.FixedLengthRecordReader`](https://github.com/jikexueyuanwiki/tensorflow-zh/blob/master/SOURCE/api_docs/python/io_ops.md#FixedLengthRecordReader)函数。更多的关于`Reader`类的功能可以查看[Reading Data](https://github.com/jikexueyuanwiki/tensorflow-zh/blob/master/SOURCE/how_tos/reading_data/index.md#reading-from-files)。
+输入模型是通过 `inputs()` 和`distorted_inputs()`函数建立起来的，这2个函数会从CIFAR-10二进制文件中读取图片文件，由于每个图片的存储字节数是固定的，因此可以使用[`tf.FixedLengthRecordReader`](https://www.tensorflow.org/versions/master/api_docs/python/tf/FixedLengthRecordReader.html#autolink-19)函数。
 
 图片文件的处理流程如下：  
 
-*  图片会被统一裁剪到24x24像素大小，裁剪中央区域用于评估或[随机](https://github.com/jikexueyuanwiki/tensorflow-zh/blob/master/SOURCE/api_docs/python/image.md#random_crop)裁剪用于训练；
-*  图片会进行[近似的白化处理](https://github.com/jikexueyuanwiki/tensorflow-zh/blob/master/SOURCE/api_docs/python/image.md#per_image_whitening)，使得模型对图片的动态范围变化不敏感。
+*  图片会被统一裁剪到24x24像素大小，裁剪中央区域用于评估或随机裁剪用于训练；
+*  图片会进行近似的白化处理，使得模型对图片的动态范围变化不敏感。
 
 对于训练，我们另外采取了一系列随机变换的方法来人为的增加数据集的大小：
 
-* 对图像进行[随机的左右翻转](https://github.com/jikexueyuanwiki/tensorflow-zh/blob/master/SOURCE/api_docs/python/image.md#random_flip_left_right)；
-* 随机变换[图像的亮度](https://github.com/jikexueyuanwiki/tensorflow-zh/blob/master/SOURCE/api_docs/python/image.md#random_brightness)；
-* 随机变换[图像的对比度](https://github.com/jikexueyuanwiki/tensorflow-zh/blob/master/SOURCE/api_docs/python/image.md#tf_image_random_contrast)；
+* 对图像进行随机的左右翻转；
+* 随机变换图像的亮度；
+* 随机变换图像的对比度；
 
-可以在[Images](https://github.com/jikexueyuanwiki/tensorflow-zh/blob/master/SOURCE/api_docs/python/image.md)页的列表中查看所有可用的变换，对于每个原始图我们还附带了一个[`image_summary`](https://github.com/jikexueyuanwiki/tensorflow-zh/blob/master/SOURCE/api_docs/python/train.md#image_summary)，以便于在TensorBoard中查看。这对于检查输入图像是否正确十分有用。  
+可以在[Images](https://github.com/tensorflow/tensorflow/blob/master/tensorflow/docs_src/api_guides/python/image.md)页的列表中查看所有可用的变换，对于每个原始图我们还附带了一个`image_summary`，以便于在TensorBoard中查看。这对于检查输入图像是否正确十分有用。  
 
 <div style="width:50%; margin:auto; margin-bottom:10px; margin-top:20px;">
-  <img style="width:70%" src="../images/cifar_image_summary.png">
+  <img style="width:70%" src="images/convolutional_nn_2.png">
 </div>
 
-从磁盘上加载图像并进行变换需要花费不少的处理时间。为了避免这些操作减慢训练过程，我们在16个独立的线程中并行进行这些操作，这16个线程被连续的安排在一个TensorFlow[队列](https://github.com/jikexueyuanwiki/tensorflow-zh/blob/master/SOURCE/api_docs/python/io_ops.md#shuffle_batch)中。  
+从磁盘上加载图像并进行变换需要花费不少的处理时间。为了避免这些操作减慢训练过程，我们在16个独立的线程中并行进行这些操作，这16个线程被连续的安排在一个TensorFlow队列中。  
 
 ### 模型预测
 
@@ -92,23 +92,23 @@ adds operations that perform inference, i.e. classification, on supplied images.
 
 Layer 名称 | 描述
 --- | ---
-`conv1` | 实现[卷积](https://github.com/jikexueyuanwiki/tensorflow-zh/blob/master/SOURCE/api_docs/python/nn.md#conv2d) 以及 [rectified linear](https://github.com/jikexueyuanwiki/tensorflow-zh/blob/master/SOURCE/api_docs/python/nn.md#relu) activation.
-`pool1` | [max pooling](https://github.com/jikexueyuanwiki/tensorflow-zh/blob/master/SOURCE/api_docs/python/nn.md#max_pool).
-`norm1` | [局部响应归一化](https://github.com/jikexueyuanwiki/tensorflow-zh/blob/master/SOURCE/api_docs/python/nn.md#local_response_normalization).
-`conv2` | [卷积](https://github.com/jikexueyuanwiki/tensorflow-zh/blob/master/SOURCE/api_docs/python/nn.md#conv2d) and [rectified linear](https://github.com/jikexueyuanwiki/tensorflow-zh/blob/master/SOURCE/api_docs/python/nn.md#relu) activation.
-`norm2` | [局部响应归一化](https://github.com/jikexueyuanwiki/tensorflow-zh/blob/master/SOURCE/api_docs/python/nn.md#local_response_normalization).
-`pool2` | [max pooling](https://github.com/jikexueyuanwiki/tensorflow-zh/blob/master/SOURCE/api_docs/python/nn.md#max_pool).
-`local3` | [基于修正线性激活的全连接层](https://github.com/jikexueyuanwiki/tensorflow-zh/blob/master/SOURCE/api_docs/python/nn.md).
-`local4` | [基于修正线性激活的全连接层](https://github.com/jikexueyuanwiki/tensorflow-zh/blob/master/SOURCE/api_docs/python/nn.md).
+`conv1` | 实现[卷积](https://www.tensorflow.org/versions/master/api_docs/python/tf/nn/conv2d.html#autolink-1897) 以及 [rectified linear](https://www.tensorflow.org/versions/master/api_docs/python/tf/nn/relu.html#autolink-1945) activation.
+`pool1` | [max pooling](https://www.tensorflow.org/versions/master/api_docs/python/tf/nn/max_pool.html#autolink-1933).
+`norm1` | [局部响应归一化](https://www.tensorflow.org/versions/master/api_docs/python/tf/nn/local_response_normalization.html#autolink-1929).
+`conv2` | [卷积](https://www.tensorflow.org/versions/master/api_docs/python/tf/nn/conv2d.html#autolink-1897) and [rectified linear](https://www.tensorflow.org/versions/master/api_docs/python/tf/nn/relu.html#autolink-1945) activation.
+`norm2` | [局部响应归一化](https://www.tensorflow.org/versions/master/api_docs/python/tf/nn/local_response_normalization.html#autolink-1929).
+`pool2` | [max pooling](https://www.tensorflow.org/versions/master/api_docs/python/tf/nn/max_pool.html#autolink-1933).
+`local3` | [基于修正线性激活的全连接层](https://www.tensorflow.org/versions/master/api_docs/python/tf/nn.html#autolink-1969).
+`local4` | [基于修正线性激活的全连接层](https://www.tensorflow.org/versions/master/api_docs/python/tf/nn.html#autolink-1969).
 `softmax_linear` | 进行线性变换以输出 logits.
 
 这里有一个由TensorBoard绘制的图形，用于描述模型建立过程中经过的步骤：
 
 <div style="width:15%; margin:auto; margin-bottom:10px; margin-top:20px;">
-  <img style="width:100%" src="../images/cifar_graph.png">
+  <img style="width:100%" src="images/convolutional_nn_3.png">
 </div>
 
-> **练习**: `inference`的输出是未归一化的logits，尝试使用[`tf.softmax()`](tensorflow-zh/SOURCE/api_docs/python/nn.md#softmax)修改网络架构后返回归一化的预测值。
+> **练习**: `inference`的输出是未归一化的logits，尝试使用`tf.softmax()`修改网络架构后返回归一化的预测值。
 
 `inputs()` 和 `inference()` 函数提供了评估模型时所需的所有构件，现在我们把讲解的重点从构建一个模型转向训练一个模型。
 
@@ -116,17 +116,17 @@ Layer 名称 | 描述
 
 ### 模型训练
 
-训练一个可进行N维分类的网络的常用方法是使用[多项式逻辑回归](https://en.wikipedia.org/wiki/Multinomial_logistic_regression),又被叫做*softmax 回归*。Softmax 回归在网络的输出层上附加了一个[softmax](https://github.com/jikexueyuanwiki/tensorflow-zh/blob/master/SOURCE/api_docs/python/nn.md#softmax) nonlinearity，并且计算归一化的预测值和label的[1-hot encoding](https://github.com/jikexueyuanwiki/tensorflow-zh/blob/master/SOURCE/api_docs/python/sparse_ops.md#sparse_to_dense)的[交叉熵](https://github.com/jikexueyuanwiki/tensorflow-zh/blob/master/SOURCE/api_docs/python/nn.md#softmax_cross_entropy_with_logits)。在正则化过程中，我们会对所有学习变量应用[权重衰减损失](https://github.com/jikexueyuanwiki/tensorflow-zh/blob/master/SOURCE/api_docs/python/nn.md#l2_loss)。模型的目标函数是求交叉熵损失和所有权重衰减项的和，`loss()`函数的返回值就是这个值。
+训练一个可进行N维分类的网络的常用方法是使用[多项式逻辑回归](https://en.wikipedia.org/wiki/Multinomial_logistic_regression),又被叫做*softmax 回归*。Softmax 回归在网络的输出层上附加了一个[softmax](https://www.tensorflow.org/versions/master/api_docs/python/tf/nn/softmax.html#autolink-1953) nonlinearity，并且计算归一化的预测值和label的[1-hot encoding](https://www.tensorflow.org/versions/master/api_docs/python/tf/sparse_to_dense.html#autolink-2140)的[交叉熵](https://www.tensorflow.org/versions/master/api_docs/python/tf/nn/softmax_cross_entropy_with_logits.html#autolink-1954)。在正则化过程中，我们会对所有学习变量应用[权重衰减损失](https://www.tensorflow.org/versions/master/api_docs/python/tf/nn/l2_loss.html#autolink-1925)。模型的目标函数是求交叉熵损失和所有权重衰减项的和，`loss()`函数的返回值就是这个值。
 
-在TensorBoard中使用[scalar_summary](https://github.com/jikexueyuanwiki/tensorflow-zh/blob/master/SOURCE/api_docs/python/train.md#scalar_summary)来查看该值的变化情况：
+在TensorBoard中使用scalar_summary来查看该值的变化情况：
 
-![CIFAR-10 Loss](../images/cifar_loss.png "CIFAR-10 Total Loss")
+![CIFAR-10 Loss](images/convolutional_nn_4.png "CIFAR-10 Total Loss")
 
-我们使用标准的梯度下降算法来训练模型（也可以在[Training](https://github.com/jikexueyuanwiki/tensorflow-zh/blob/master/SOURCE/api_docs/python/train.md)中看看其他方法），其学习率随时间以指数形式衰减。
+我们使用标准的梯度下降算法来训练模型（也可以在[Training](https://www.tensorflow.org/versions/master/api_docs/python/tf/train.html#autolink-2321)中看看其他方法），其学习率随时间以指数形式衰减。
 
-![CIFAR-10 Learning Rate Decay](../images/cifar_lr_decay.png "CIFAR-10 Learning Rate Decay")
+![CIFAR-10 Learning Rate Decay](images/convolutional_nn_5.png "CIFAR-10 Learning Rate Decay")
 
-`train()` 函数会添加一些操作使得目标函数最小化，这些操作包括计算梯度、更新学习变量（详细信息请查看[`GradientDescentOptimizer`](tensorflow-zh/SOURCE/api_docs/python/train.md#GradientDescentOptimizer)）。`train()` 函数最终会返回一个用以对一批图像执行所有计算的操作步骤，以便训练并更新模型。
+`train()` 函数会添加一些操作使得目标函数最小化，这些操作包括计算梯度、更新学习变量（详细信息请查看`GradientDescentOptimizer`）。`train()` 函数最终会返回一个用以对一批图像执行所有计算的操作步骤，以便训练并更新模型。
 
 ## 开始执行并训练模型
 
@@ -161,9 +161,9 @@ Filling queue with 20000 CIFAR images before starting to train. This will take a
 
 > **练习:** 当实验时，第一阶段的训练时间有时会非常的长，长到足以让人生厌。可以尝试减少初始化时初始填充到队列中图片数量来改变这种情况。在`cifar10.py`中搜索`NUM_EXAMPLES_PER_EPOCH_FOR_TRAIN`并修改之。  
 
-`cifar10_train.py` 会周期性的在[检查点文件](https://github.com/jikexueyuanwiki/tensorflow-zh/tree/master/SOURCE/how_tos/variables/index.md#saving-and-restoring)中[保存](https://github.com/jikexueyuanwiki/tensorflow-zh/blob/master/SOURCE/api_docs/python/state_ops.md#Saver)模型中的所有参数，但是*不会*对模型进行评估。`cifar10_eval.py`会使用该检查点文件来测试预测性能（详见下面的描述：[评估模型](#评估模型)）。
+`cifar10_train.py` 会周期性的在检查点文件中[保存](https://www.tensorflow.org/versions/master/api_docs/python/tf/train/Saver.html#autolink-2254)模型中的所有参数，但是*不会*对模型进行评估。`cifar10_eval.py`会使用该检查点文件来测试预测性能（详见下面的描述：[评估模型](#评估模型)）。
 
-如果按照上面的步骤做下来，你应该已经开始训练一个CIFAR-10模型了。[恭喜你!](https://www.youtube.com/watch?v=9bZkp7q19f0)
+如果按照上面的步骤做下来，你应该已经开始训练一个CIFAR-10模型了。
 
 `cifar10_train.py`输出的终端信息中提供了关于模型如何训练的一些信息，但是我们可能希望了解更多关于模型训练时的信息，比如：  
 * 损失是*真的*在减小还是看到的只是噪声数据？  
@@ -171,16 +171,16 @@ Filling queue with 20000 CIFAR images before starting to train. This will take a
 * 梯度、激活、权重的值是否合理？  
 * 当前的学习率是多少？  
 
-[TensorBoard](https://github.com/jikexueyuanwiki/tensorflow-zh/tree/master/SOURCE/how_tos/summaries_and_tensorboard/index.md)提供了该功能，可以通过`cifar10_train.py`中的[`SummaryWriter`](https://github.com/jikexueyuanwiki/tensorflow-zh/blob/master/SOURCE/api_docs/python/train.md#SummaryWriter)周期性的获取并显示这些数据。
+TensorBoard提供了该功能，可以通过`cifar10_train.py`中的`SummaryWriter`周期性的获取并显示这些数据。
  
 比如我们可以在训练过程中查看`local3`的激活情况，以及其特征维度的稀疏情况：
 
 <div style="width:100%; margin:auto; margin-bottom:10px; margin-top:20px; display: flex; flex-direction: row">
-  <img style="flex-grow:1; flex-shrink:1;" src="../images/cifar_sparsity.png">
-  <img style="flex-grow:1; flex-shrink:1;" src="../images/cifar_activations.png">
+  <img style="flex-grow:1; flex-shrink:1;" src="images/convolutional_nn_6.png">
+  <img style="flex-grow:1; flex-shrink:1;" src="images/convolutional_nn_7.png">
 </div>
 
-相比于总损失，在训练过程中的单项损失尤其值得人们的注意。但是由于训练中使用的数据批量比较小，损失值中夹杂了相当多的噪声。在实践过程中，我们也发现相比于原始值，损失值的移动平均值显得更为有意义。请参阅脚本[`ExponentialMovingAverage`](https://github.com/jikexueyuanwiki/tensorflow-zh/blob/master/SOURCE/api_docs/python/train.md#ExponentialMovingAverage)了解如何实现。
+相比于总损失，在训练过程中的单项损失尤其值得人们的注意。但是由于训练中使用的数据批量比较小，损失值中夹杂了相当多的噪声。在实践过程中，我们也发现相比于原始值，损失值的移动平均值显得更为有意义。请参阅脚本[`ExponentialMovingAverage`](https://www.tensorflow.org/versions/master/api_docs/python/tf/train/ExponentialMovingAverage.html#autolink-2224)了解如何实现。
 
 ## 评估模型
 
@@ -203,7 +203,7 @@ python cifar10_eval.py
 
 评估脚本只是周期性的返回precision@1 (The script merely returns the precision @ 1 periodically)--在该例中返回的准确率是86%。`cifar10_eval.py` 同时也返回其它一些可以在TensorBoard中进行可视化的简要信息。可以通过这些简要信息在评估过程中进一步的了解模型。
 
-训练脚本会为所有学习变量计算其[移动均值](https://github.com/jikexueyuanwiki/tensorflow-zh/blob/master/SOURCE/api_docs/python/train.md#ExponentialMovingAverage),评估脚本则直接将所有学习到的模型参数替换成对应的移动均值。这一替代方式可以在评估过程中提升模型的性能。  
+训练脚本会为所有学习变量计算其[移动均值](https://www.tensorflow.org/versions/master/api_docs/python/tf/train/ExponentialMovingAverage.html#autolink-2224),评估脚本则直接将所有学习到的模型参数替换成对应的移动均值。这一替代方式可以在评估过程中提升模型的性能。  
 
 > **练习:** 通过precision @ 1测试发现，使用均值参数可以将预测性能提高约3%，在`cifar10_eval.py`中尝试修改为不采用均值参数的方式，并确认由此带来的预测性能下降。  
 
@@ -224,7 +224,7 @@ python cifar10_eval.py
 下图示意了该模型的结构：:
 
 <div style="width:40%; margin:auto; margin-bottom:10px; margin-top:20px;">
-  <img style="width:100%" src="../images/Parallelism.png">
+  <img style="width:100%" src="images/convolutional_nn_8.png">
 </div>
 
 可以看到，每一个GPU会用一批独立的数据计算梯度和估计值。这种设置可以非常有效的将一大批数据分割到各个GPU上。
@@ -238,11 +238,11 @@ python cifar10_eval.py
 在多个设备中设置变量和操作时需要做一些特殊的抽象。
 
 我们首先需要把在单个模型拷贝中计算估计值和梯度的行为抽象到一个函数中。在代码中，我们称这个抽象对象为“tower”。对于每一个“tower”我们都需要设置它的两个属性：  
-* 在一个tower中为所有操作设定一个唯一的名称。[`tf.name_scope()`](https://github.com/jikexueyuanwiki/tensorflow-zh/blob/master/SOURCE/api_docs/python/framework.md#name_scope)通过添加一个范围前缀来提供该唯一名称。比如，第一个tower中的所有操作都会附带一个前缀`tower_0`，示例：`tower_0/conv1/Conv2D`；
+* 在一个tower中为所有操作设定一个唯一的名称。[`tf.name_scope()`](https://www.tensorflow.org/versions/master/api_docs/python/tf/name_scope.html#autolink-1884)通过添加一个范围前缀来提供该唯一名称。比如，第一个tower中的所有操作都会附带一个前缀`tower_0`，示例：`tower_0/conv1/Conv2D`；
 
-* 在一个tower中运行操作的优先硬件设备。 [`tf.device()`](https://github.com/jikexueyuanwiki/tensorflow-zh/blob/master/SOURCE/api_docs/python/framework.md#device) 提供该信息。比如，在第一个tower中的所有操作都位于 `device('/gpu:0')`范围中，暗含的意思是这些操作应该运行在第一块GPU上；
+* 在一个tower中运行操作的优先硬件设备。 [`tf.device()`](https://www.tensorflow.org/versions/master/api_docs/python/tf/device.html#autolink-1129) 提供该信息。比如，在第一个tower中的所有操作都位于 `device('/gpu:0')`范围中，暗含的意思是这些操作应该运行在第一块GPU上；
 
-为了在多个GPU上共享变量，所有的变量都绑定在CPU上，并通过[`tf.get_variable()`](https://github.com/jikexueyuanwiki/tensorflow-zh/blob/master/SOURCE/api_docs/python/state_ops.md#get_variable)访问。可以查看[Sharing Variables](https://github.com/jikexueyuanwiki/tensorflow-zh/blob/master/SOURCE/how_tos/variables/index.md)以了解如何共享变量。
+为了在多个GPU上共享变量，所有的变量都绑定在CPU上，并通过[`tf.get_variable()`](https://www.tensorflow.org/versions/master/api_docs/python/tf/get_variable.html#autolink-1260)访问。
 
 ### 启动并在多个GPU上训练模型
 
@@ -270,7 +270,7 @@ Filling queue with 20000 CIFAR images before starting to train. This will take a
 
 ## 下一步
 
-[恭喜你!](https://www.youtube.com/watch?v=9bZkp7q19f0) 你已经完成了CIFAR-10教程。
+你已经完成了CIFAR-10教程。
 如果你对开发和训练自己的图像分类系统感兴趣，我们推荐你新建一个基于该教程的分支，并修改其中的内容以建立解决您问题的图像分类系统。
 
 > **练习:** 下载[Street View House Numbers (SVHN)](http://ufldl.stanford.edu/housenumbers/) 数据集。新建一个CIFAR-10教程的分支，并将输入数据替换成SVHN。尝试改变网络结构以提高预测性能。

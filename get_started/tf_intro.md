@@ -251,11 +251,4 @@ with tf.Session() as sess:
 # [array([ 14.], dtype=float32)]
 ```
 
-for a larger-scale example of feeds.  
 如果没有正确提供 feed, `placeholder()` 操作将会产生错误。  
-MNIST 全连通 [feed 教程](http://wiki.jikexueyuan.com/project/tensorflow-zh/tutorials/mnist_tf.html)  
-\([source code](https://raw.githubusercontent.com/tensorflow/tensorflow/master/tensorflow/examples/tutorials/mnist/fully_connected_feed.py)\)  
-给出了一个更大规模的使用 feed 的例子.
-
-
-

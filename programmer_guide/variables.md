@@ -1,15 +1,15 @@
 # 变量
 
-当训练模型时，用[变量](https://github.com/jikexueyuanwiki/tensorflow-zh/blob/master/api_docs/python/state_ops.md)来存储和更新参数。变量包含张量 (Tensor)存放于内存的缓存区。建模时它们需要被明确地初始化，模型训练后它们必须被存储到磁盘。这些变量的值可在之后模型训练和分析是被加载。
+当训练模型时，用变量来存储和更新参数。变量包含张量 (Tensor)存放于内存的缓存区。建模时它们需要被明确地初始化，模型训练后它们必须被存储到磁盘。这些变量的值可在之后模型训练和分析是被加载。
 
 本文档描述以下两个TensorFlow类。点击以下链接可查看完整的API文档：
 
-- [`tf.Variable`](https://github.com/jikexueyuanwiki/tensorflow-zh/blob/master/api_docs/python/state_ops.md#Variable) 类
-- [`tf.train.Saver`](https://github.com/jikexueyuanwiki/tensorflow-zh/blob/master/api_docs/python/state_ops.md#Saver) 类
+- [`tf.Variable`](https://www.tensorflow.org/api_docs/python/tf/Variable) 类
+- [`tf.train.Saver`](https://www.tensorflow.org/api_docs/python/tf/train/Saver) 类
 
 ## 创建
 
-当创建一个[变量](https://github.com/jikexueyuanwiki/tensorflow-zh/blob/master/api_docs/python/state_ops.md)时，你将一个`张量`作为初始值传入构造函数`Variable()`。TensorFlow提供了一系列操作符来初始化张量，初始值是[常量或是随机值](https://github.com/jikexueyuanwiki/tensorflow-zh/blob/master/api_docs/python/constant_op.md)。
+当创建一个变量时，你将一个`张量`作为初始值传入构造函数`Variable()`。TensorFlow提供了一系列操作符来初始化张量，初始值是常量或是随机值。
  
 注意，所有这些操作符都需要你指定张量的shape。那个形状自动成为变量的shape。变量的shape通常是固定的，但TensorFlow提供了高级的机制来重新调整其行列数。
 
@@ -73,7 +73,7 @@ w_twice = tf.Variable(weights.initialized_value() * 0.2, name="w_twice")
 
 ### 自定义初始化
 
-`tf.initialize_all_variables()`函数便捷地添加一个op来初始化模型的所有变量。你也可以给它传入一组变量进行初始化。详情请见[Variables Documentation](https://github.com/jikexueyuanwiki/tensorflow-zh/blob/master/api_docs/python/state_ops.md)，包括检查变量是否被初始化。
+`tf.initialize_all_variables()`函数便捷地添加一个op来初始化模型的所有变量。你也可以给它传入一组变量进行初始化。详情请见[Variables Documentation](https://www.tensorflow.org/api_docs/python/tf/Variable)，包括检查变量是否被初始化。
 
 ## 保存和加载
 
@@ -83,7 +83,7 @@ w_twice = tf.Variable(weights.initialized_value() * 0.2, name="w_twice")
 
 变量存储在二进制文件里，主要包含从变量名到tensor值的映射关系。
 
-当你创建一个`Saver`对象时，你可以选择性地为检查点文件中的变量挑选变量名。默认情况下，将每个变量[`Variable.name`](https://github.com/jikexueyuanwiki/tensorflow-zh/blob/master/api_docs/python/state_ops.md#Variable.name)属性的值。
+当你创建一个`Saver`对象时，你可以选择性地为检查点文件中的变量挑选变量名。默认情况下，将每个变量`Variable.name`属性的值。
 
 ### 保存变量
 
@@ -146,7 +146,7 @@ with tf.Session() as sess:
 注意：
 
 - 如果需要保存和恢复模型变量的不同子集，可以创建任意多个saver对象。同一个变量可被列入多个saver对象中，只有当saver的`restore()`函数被运行时，它的值才会发生改变。
-- 如果你仅在session开始时恢复模型变量的一个子集，你需要对剩下的变量执行初始化op。详情请见[`tf.initialize_variables()`](https://github.com/jikexueyuanwiki/tensorflow-zh/blob/master/api_docs/python/state_ops.md#initialize_variables)。
+- 如果你仅在session开始时恢复模型变量的一个子集，你需要对剩下的变量执行初始化op。详情请见[`tf.initialize_variables()`](https://www.tensorflow.org/versions/master/api_docs/python/tf/initialize_variables.html#autolink-1353)。
 
 
 ```python
