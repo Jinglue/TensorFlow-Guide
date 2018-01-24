@@ -6,7 +6,7 @@
 
 MNIST是一个入门级的计算机视觉数据集，它包含各种手写数字图片：
 <div style="width:40%; margin:auto; margin-bottom:10px; margin-top:20px;">
-<img style="width:100%" src="../images/MNIST.png">
+<img style="width:100%" src="images/mnist_for_beginners_1.png">
 </div>
  
 它也包含每一张图片对应的标签，告诉我们这个是数字几。比如，上面这四张图片的标签分别是5，0，4，1。
@@ -31,7 +31,7 @@ mnist = input_data.read_data_sets("MNIST_data/", one_hot=True)
 每一张图片包含28X28个像素点。我们可以用一个数字数组来表示这张图片：
 
 <div style="width:50%; margin:auto; margin-bottom:10px; margin-top:20px;">
-<img style="width:100%" src="../images/MNIST-Matrix.png">
+<img style="width:100%" src="images/mnist_for_beginners_2.png">
 </div>
 
 我们把这个数组展开成一个向量，长度是 28x28 = 784。如何展开这个数组（数字间的顺序）不重要，只要保持各个图片采用相同的方式展开。从这个角度来看，MNIST数据集的图片就是在784维向量空间里面的点, 并且拥有比较[复杂的结构](http://colah.github.io/posts/2014-10-Visualizing-MNIST/) (提醒: 此类数据的可视化是计算密集型的)。  
@@ -41,13 +41,13 @@ mnist = input_data.read_data_sets("MNIST_data/", one_hot=True)
 因此，在MNIST训练数据集中，`mnist.train.images` 是一个形状为 `[60000, 784]` 的张量，第一个维度数字用来索引图片，第二个维度数字用来索引每张图片中的像素点。在此张量里的每一个元素，都表示某张图片里的某个像素的强度值，值介于0和1之间。
 
 <div style="width:40%; margin:auto; margin-bottom:10px; margin-top:20px;">
-<img style="width:100%" src="../images/mnist-train-xs.png">
+<img style="width:100%" src="images/mnist_for_beginners_3.png">
 </div>
 
 相对应的MNIST数据集的标签是介于0到9的数字，用来描述给定图片里表示的数字。为了用于这个教程，我们使标签数据是"one-hot vectors"。 一个one-hot向量除了某一位的数字是1以外其余各维度数字都是0。所以在此教程中，数字n将表示成一个只有在第n维度（从0开始）数字为1的10维向量。比如，标签0将表示成([1,0,0,0,0,0,0,0,0,0,0])。因此， `mnist.train.labels` 是一个 `[60000, 10]` 的数字矩阵。 
 
 <div style="width:40%; margin:auto; margin-bottom:10px; margin-top:20px;">
-<img style="width:100%" src="../images/mnist-train-ys.png">
+<img style="width:100%" src="images/mnist_for_beginners_4.png">
 </div>
 
 现在，我们准备好可以开始构建我们的模型啦！
@@ -65,7 +65,7 @@ softmax回归（softmax regression）分两步：第一步
 下面的图片显示了一个模型学习到的图片上每个像素对于特定数字类的权值。红色代表负数权值，蓝色代表正数权值。
 
 <div style="width:40%; margin:auto; margin-bottom:10px; margin-top:20px;">
-<img style="width:100%" src="../images/softmax-weights.png">
+<img style="width:100%" src="images/mnist_for_beginners_5.png">
 </div>
 
 我们也需要加入一个额外的偏置量（bias），因为输入往往会带有一些无关的干扰量。因此对于给定的输入图片 **x** 它代表的是数字 **i** 的证据可以表示为
@@ -89,19 +89,19 @@ softmax回归（softmax regression）分两步：第一步
 对于softmax回归模型可以用下面的图解释，对于输入的`xs`加权求和，再分别加上一个偏置量，最后再输入到softmax函数中：
 
 <div style="width:55%; margin:auto; margin-bottom:10px; margin-top:20px;">
-<img style="width:100%" src="../images/softmax-regression-scalargraph.png">
+<img style="width:100%" src="images/mnist_for_beginners_6.png">
 </div>
 
 如果把它写成一个等式，我们可以得到：
 
 <div style="width:52%; margin-left:25%; margin-bottom:10px; margin-top:20px;">
-<img style="width:100%" src="../images/softmax-regression-scalarequation.png">
+<img style="width:100%" src="images/mnist_for_beginners_7.png">
 </div>
 
 我们也可以用向量表示这个计算过程：用矩阵乘法和向量相加。这有助于提高计算效率。（也是一种更有效的思考方式）
 
 <div style="width:50%; margin:auto; margin-bottom:10px; margin-top:20px;">
-<img style="width:100%" src="../images/softmax-regression-vectorequation.png">
+<img style="width:100%" src="images/mnist_for_beginners_8.png">
 </div>
 
 更进一步，可以写成更加紧凑的方式：
