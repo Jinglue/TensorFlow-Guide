@@ -38,12 +38,12 @@ TensorFlow 支持 C, C++, Python 编程语言. 目前, TensorFlow 的 Python 库
 
 构建图的第一步, 是创建源 op \(source op\). 源 op 不需要任何输入, 例如 `常量 (Constant)`. 源 op 的输出被传递给其它 op 做运算.
 
-Python 库中, op 构造器的返回值代表被构造出的 op 的输出, 这些返回值可以传递给其它  
+Python 库中，op 构造器的返回值代表被构造出的 op 的输出, 这些返回值可以传递给其它  
 op 构造器作为输入.
 
 TensorFlow Python 库有一个_默认图 \(default graph\)_, op 构造器可以为其增加节点. 这个默认图对  
 许多程序来说已经足够用了. 阅读 [Graph 类](../api_docs/python/framework.md#Graph) 文档  
-来了解如何管理多个图.
+来了解如何管理多个图。
 
 ```python
 import tensorflow as tf
@@ -233,11 +233,11 @@ with tf.Session() as sess:
 ## Feed
 
 上述示例在计算图中引入了 tensor, 以常量或变量的形式存储. TensorFlow 还提供了 feed 机制, 该机制  
-可以临时替代图中的任意操作中的 tensor    可以对图中任何操作提交补丁, 直接插入一个 tensor.
+可以临时替代图中的任意操作中的 tensor 可以对图中任何操作提交补丁, 直接插入一个 tensor。
 
-feed 使用一个 tensor 值临时替换一个操作的输出结果. 你可以提供 feed 数据作为 `run()` 调用的参数.  
-feed 只在调用它的方法内有效, 方法结束, feed 就会消失. 最常见的用例是将某些特殊的操作指定为 "feed" 操作,  
-标记的方法是使用 tf.placeholder\(\) 为这些操作创建占位符.
+feed 使用一个 tensor 值临时替换一个操作的输出结果. 你可以提供 feed 数据作为 `run()` 调用的参数。  
+feed 只在调用它的方法内有效, 方法结束, feed 就会消失. 最常见的用例是将某些特殊的操作指定为 "feed" 操作，  
+标记的方法是使用 tf.placeholder\(\) 为这些操作创建占位符。
 
 ```python
 input1 = tf.placeholder(tf.float32)
@@ -252,7 +252,7 @@ with tf.Session() as sess:
 ```
 
 for a larger-scale example of feeds.  
-如果没有正确提供 feed, `placeholder()` 操作将会产生错误.  
+如果没有正确提供 feed, `placeholder()` 操作将会产生错误。  
 MNIST 全连通 [feed 教程](http://wiki.jikexueyuan.com/project/tensorflow-zh/tutorials/mnist_tf.html)  
 \([source code](https://raw.githubusercontent.com/tensorflow/tensorflow/master/tensorflow/examples/tutorials/mnist/fully_connected_feed.py)\)  
 给出了一个更大规模的使用 feed 的例子.
