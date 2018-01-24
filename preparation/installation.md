@@ -491,6 +491,3 @@ TypeError: __init__() got an unexpected keyword argument 'syntax'
 ```bash
 brew reinstall --devel protobuf
 ```
-
-
-
