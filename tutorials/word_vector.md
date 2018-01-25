@@ -44,13 +44,13 @@ Word2vec是一种可以进行高效率词嵌套学习的预测模型。其两种
 
 神经概率化语言模型通常使用[极大似然法](https://en.wikipedia.org/wiki/Maximum_likelihood) (ML) 进行训练，其中通过 [*softmax* function](https://en.wikipedia.org/wiki/Softmax_function) 来最大化当提供前一个单词 \\(h\\) (代表 "history")，后一个单词的概率 \\(w_t\\) (代表 "target")，
 
-$$
+{% math %}
 \begin{aligned}
 P(w_t | h) &= softmax(\exp \{ score(w_t, h) \}) \\
            &= \frac{\exp \{ score(w_t, h) \} }
              {\sum_{Word w' in Vocab} \exp \{ score(w', h) \} }.
 \end{aligned}
-$$
+{% endblock %}
 
 当 \\(\text{score}(w\_t, h)\\) 计算了文字 \\(w\_t\\) 和 上下文 \\(h\\) 的相容性（通常使用向量积）。我们使用对数似然函数来训练训练集的最大值，比如通过：
 
