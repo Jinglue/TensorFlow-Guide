@@ -76,9 +76,11 @@ $$
 
 从数学角度来说，我们的目标是对每个样本最大化：
 
-$$J_\text{NEG} = \log Q_\theta(D=1 |w_t, h) +
+$$
+J_\text{NEG} = \log Q_\theta(D=1 |w_t, h) +
   k \mathop{\mathbb{E}}_{\tilde w \sim P_\text{noise}}
-     \left[ \log Q_\theta(D = 0 |\tilde w, h) \right]$$
+     \left[ \log Q_\theta(D = 0 |\tilde w, h) \right]
+$$
 
 其中 \\(Q_\theta(D=1 | w, h)\\) 代表的是数据集在当前上下文 \\(h\\) ，根据所学习的嵌套向量 \\(\theta\\) ，目标单词 \\(w\\) 使用二分类逻辑回归计算得出的概率。在实践中，我们通过在噪声分布中绘制比对文字来获得近似的期望值（通过计算[蒙特卡洛平均值](https://en.wikipedia.org/wiki/Monte_Carlo_integration)）。
 
@@ -106,8 +108,10 @@ $$J_\text{NEG} = \log Q_\theta(D=1 |w_t, h) +
 
 假设用 \\(t\\)表示上面这个例子中`quick` 来预测 `the` 的训练的单个循环。用 `num_noise` 定义从噪声分布中挑选出来的噪声（相反的）单词的个数，通常使用一元分布，\\(P(w)\\)。为了简单起见，我们就定`num_noise=1`，用 `sheep` 选作噪声词。接下来就可以计算每一对观察值和噪声值的损失函数了，每一个执行步骤就可表示为：
 
-$$J^{(t)}_\text{NEG} = \log Q_\theta(D=1 | \text{the, quick}) +
-  \log(Q_\theta(D=0 | \text{sheep, quick}))$$.
+$$
+J^{(t)}_\text{NEG} = \log Q_\theta(D=1 | \text{the, quick}) +
+  \log(Q_\theta(D=0 | \text{sheep, quick}))
+$$.
 
 整个计算过程的目标是通过更新嵌套参数 \\(\theta\\) 来逼近目标函数（这个这个例子中就是使目标函数最大化）。为此我们要计算损失函数中嵌套参数 \\(\theta\\) 的梯度，比如，
 \\(\frac{\partial}{\partial \theta} J_\text{NEG}\\) (幸好TensorFlow封装了工具函数可以简单调用!)。对于整个数据集，当梯度下降的过程中不断地更新参数，对应产生的效果就是不断地移动每个单词的嵌套向量，直到可以把真实单词和噪声单词很好得区分开。
