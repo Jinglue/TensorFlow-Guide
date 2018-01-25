@@ -68,11 +68,11 @@ softmax回归（softmax regression）分两步：第一步
 <img style="width:100%" src="images/mnist_for_beginners_5.png">
 </div>
 
-我们也需要加入一个额外的偏置量（bias），因为输入往往会带有一些无关的干扰量。因此对于给定的输入图片 $x$ 它代表的是数字 $i$ 的证据可以表示为
+我们也需要加入一个额外的偏置量（bias），因为输入往往会带有一些无关的干扰量。因此对于给定的输入图片 **x** 它代表的是数字 **i** 的证据可以表示为
 
 ![](../images/mnist1.png)
 
-其中 ![](../images/mnist2.png) 代表权重，![](../images/mnist3.png) 代表数字 $i$ 类的偏置量，$j$ 代表给定图片 $x$ 的像素索引用于像素求和。然后用softmax函数可以把这些证据转换成概率 $y$：
+其中 ![](../images/mnist2.png) 代表权重，![](../images/mnist3.png) 代表数字 **i** 类的偏置量，**j** 代表给定图片 **x** 的像素索引用于像素求和。然后用softmax函数可以把这些证据转换成概率 **y**：
 
 ![](../images/mnist4.png)
 
