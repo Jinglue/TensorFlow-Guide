@@ -47,7 +47,7 @@ Word2vec是一种可以进行高效率词嵌套学习的预测模型。其两种
 $$
 \begin{aligned}
 P(w_t | h) &= softmax(\exp \{ score(w_t, h) \}) \\
-           &= \frac{\exp \{ \score(w_t, h) \} }
+           &= \frac{\exp \{ score(w_t, h) \} }
              {\sum_{Word w' in Vocab} \exp \{ score(w', h) \} }.
 \end{aligned}
 $$
