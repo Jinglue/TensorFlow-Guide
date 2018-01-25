@@ -54,13 +54,13 @@ P(w_t | h) &= softmax(\exp \{ score(w_t, h) \}) \\
 
 当 \\(\text{score}(w\_t, h)\\) 计算了文字 \\(w\_t\\) 和 上下文 \\(h\\) 的相容性（通常使用向量积）。我们使用对数似然函数来训练训练集的最大值，比如通过：
 
-$$
+{% math %}
 \begin{aligned}
  J_\text{ML} &= \log P(w_t | h) \\
   &= \text{score}(w_t, h) -
      \log \left( \sum_\text{Word w' in Vocab} \exp \{ \text{score}(w', h) \} \right)
 \end{aligned}
-$$
+{% endblock %}
 
 这里提出了一个解决语言概率模型的合适的通用方法。然而这个方法实际执行起来开销非常大，因为我们需要去计算并正则化当前上下文环境 \\(h\\) 中所有其他 \\(V\\) 单词 \\(w'\\) 的概率得分，*在每一步训练迭代中*。
 
