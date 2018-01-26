@@ -4,7 +4,20 @@
 
 TensorFlow 文档原版来自：[TensorFlow 官方文档](https://www.tensorflow.org)。
 
-针对目前流行的汉化文档版本落后的问题，景略集智发起本项目。本项目同时托管在 [Gitbook](https://www.gitbook.com/book/jinglue/tensorflow-guide/details) 和 [GitHub](https://github.com/Jinglue/TensorFlow-Guide) 上，实时同步。
+针对目前流行的汉化文档版本落后的问题，景略集智发起本项目。
+
+项目同时托管在 [Gitbook](https://www.gitbook.com/book/jinglue/tensorflow-guide/details) 和 [GitHub](https://github.com/Jinglue/TensorFlow-Guide) 上，实时同步。
+
+## 目录
+
+章节和文件的具体对应关系，请查看 SUMMARY.md 文件原文。
+
+| 章    | 文件路径             | 原文路径                                     |
+| ---- | ---------------- | ---------------------------------------- |
+| 准备工作 | preparation      | [Install](https://www.tensorflow.org/install/) |
+| 开始使用 | get_started      | [Get Started](https://www.tensorflow.org/get_started/) |
+| 编程指南 | programmer_guide | [Programmer's Guide](https://www.tensorflow.org/programmers_guide/) |
+| 教程   | tutorials        | [Tutorials](https://www.tensorflow.org/tutorials/) |
 
 ## 须知
 
