@@ -1,5 +1,7 @@
 # 为 Ubuntu 安装 TensorFlow
 
+> TensorFlow 页面底部上次更新日期：一月 4, 2018
+
 本教程将指导你如何在 Ubuntu 上安装 TensorFlow。教程可能也适用于其他 Linux 系统，但我们只在 Ubuntu 14.04 及更高版本上通过了测试，并且只对 Ubuntu 14.04 及更高版本提供支持。
 
 ## 选择一个 TensorFlow 版本
@@ -203,7 +205,7 @@ $ sudo pip  install --upgrade tfBinaryURL   # Python 2.7
 $ sudo pip3 install --upgrade tfBinaryURL   # Python 3.n 
 ```
 
-其中的 `tfBinaryURL` 指定了 TensorFlow Python 包的 URL。`tfBinaryURL` 的合适值取决于操作系统、Python 版本，以及 GPU 支持。你可以从[这个页面](#url-of-the-tensorflow-python-package)找到适用你的系统的值。例如你的情况是 Linux、Python 3.4、仅支持 CPU，通过以下命令，在已激活的 virtualenv 环境中安装 TensorFlow：
+其中的 `tfBinaryURL` 指定了 TensorFlow Python 包的 URL。`tfBinaryURL` 的合适值取决于操作系统、Python 版本，以及 GPU 支持。你可以从[这个页面](#url-of-the-tensorflow-python-package)找到适用你的系统的值。例如你的情况是 Linux、Python 3.4、仅支持 CPU，通过以下命令安装 TensorFlow：
 
 ```
 (tensorflow)$ pip3 install --upgrade \
