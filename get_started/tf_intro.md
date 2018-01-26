@@ -1,4 +1,8 @@
+> 需要更新
+
 # TensorFlow 使用入门
+
+> 对应 TensorFlow 官方文档底部的更新日期：
 
 使用 TensorFlow, 你必须明白 TensorFlow:
 

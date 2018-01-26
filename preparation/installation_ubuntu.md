@@ -1,6 +1,6 @@
 # 为 Ubuntu 安装 TensorFlow
 
-> TensorFlow 页面底部上次更新日期：一月 4, 2018
+> 对应 TensorFlow 官方文档底部的更新日期：一月 4, 2018
 
 本教程将指导你如何在 Ubuntu 上安装 TensorFlow。教程可能也适用于其他 Linux 系统，但我们只在 Ubuntu 14.04 及更高版本上通过了测试，并且只对 Ubuntu 14.04 及更高版本提供支持。
 

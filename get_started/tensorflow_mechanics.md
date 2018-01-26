@@ -1,4 +1,8 @@
+> 需要更新
+
 # TensorFlow运作方式入门
+
+> 对应 TensorFlow 官方文档底部的更新日期：
 
 代码：[tensorflow/g3doc/tutorials/mnist/](https://github.com/tensorflow/tensorflow/tree/master/tensorflow/examples/tutorials/mnist)
 

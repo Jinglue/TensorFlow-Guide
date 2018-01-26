@@ -1,6 +1,6 @@
 # 为 macOS 安装 TensorFlow
 
-> TensorFlow 页面底部上次更新日期：一月 4, 2018
+> 对应 TensorFlow 官方文档底部的更新日期：一月 4, 2018
 
 > 本页面内容从[为 Ubuntu 安装 TensorFlow](installation_ubuntu.md) 直接复制并修改，如有纰漏请指出
 

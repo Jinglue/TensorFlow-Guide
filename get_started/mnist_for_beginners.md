@@ -1,4 +1,8 @@
+> 需要更新
+
 # MNIST机器学习入门
+
+> 对应 TensorFlow 官方文档底部的更新日期：
 
 *这个教程的目标读者是对机器学习和TensorFlow都不太了解的新手。如果你已经了解MNIST和softmax回归(softmax regression)的相关知识，你可以阅读这个[快速上手教程](./mnist_pros.md)。*
  
