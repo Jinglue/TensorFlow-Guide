@@ -12,6 +12,8 @@ TensorFlow 文档原版来自：[TensorFlow 官方文档](https://www.tensorflow
 
 H1 标题下方，须用引用级别注明翻译对应的官方文档更新日期，比如：
 
+> 原文链接：[Programmer's Guide](https://www.tensorflow.org/programmers_guide/)
+
 > 对应 TensorFlow 官方文档底部的更新日期：十一月 3, 2017
 
 ### 数学公式
