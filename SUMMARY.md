@@ -13,7 +13,7 @@
 	* [使用 tf.contrib.learn 构建输入函数](get_started/build_with_estimator.md)
 	* [TensorBoard：可视化学习](get_started/visualizing_learning.md)
 	* [TensorBoard：图表可视化](get_started/graph_visualizing.md)
-	* [TensorBoard Histogram Dashboard](get_started/histogram_dashboard)
+	* [TensorBoard Histogram Dashboard](get_started/histogram_dashboard.md)
 * [编程指南](programmer_guide/README.md)
 	* [Estimators](programmer_guide/estimators.md)
 	* [Tensors](programmer_guide/tensors.md)
