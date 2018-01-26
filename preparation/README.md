@@ -1,5 +1,7 @@
 # 准备工作
 
+> 对应 TensorFlow 官方文档底部的更新日期：十一月 3, 2017
+
 我们已在以下笔记本/桌面电脑的 64 位操作系统上构建并测试了 TensorFlow：
 
 MacOS X 10.11 (El Capitan) 或更高版本。
@@ -10,10 +12,10 @@ Windows 7 或更高版本。
 
 下列链接中的教程将会指导你如何安装 Python TensorFlow，让你能用 Python 编写你的应用程序：
 
-* [在 Ubuntu 上安装 TensorFlow](https://www.tensorflow.org/install/install_linux)
-* [在 macOS 上安装 TensorFlow](https://www.tensorflow.org/install/install_mac)
-* [在 Windows 上安装 TensorFlow](https://www.tensorflow.org/install/install_windows)
-* [从源码安装 TensorFlow](https://www.tensorflow.org/install/install_sources)
+* [在 Ubuntu 上安装 TensorFlow](installation_ubuntu.md)
+* [在 macOS 上安装 TensorFlow](installation_macos.md)
+* [在 Windows 上安装 TensorFlow](installation_windows.md)
+* [从源码安装 TensorFlow](installation_sources.md)
 
 从 0.x 到 1.0 版本，Python TensorFlow 的许多方面都发生了变化，以下链接中的教程将会指导你如何将旧版本的 TensorFlow 应用程序移植到新版本 1.0:	
 

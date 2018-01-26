@@ -2,10 +2,12 @@
 
 ## 概述
 
-TensorFlow 文档原版来自：  
-[TensorFlow.org](https://www.tensorflow.org)
+TensorFlow 文档原版来自：[TensorFlow 官方文档](https://www.tensorflow.org)。
 
-针对目前流行汉化文档版本落后的问题发起本项目。
+针对目前流行汉化文档版本落后的问题发起本项目。使用 MathJax 支持数学公式渲染。
 
-使用 MathJax 支持数学公式渲染。
+## 须知
 
+H1 标题下方，须用引用级别注明翻译对应的官方文档更新日期，比如：
+
+> 对应 TensorFlow 官方文档底部的更新日期：十一月 3, 2017

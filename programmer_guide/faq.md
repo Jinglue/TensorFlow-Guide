@@ -1,4 +1,8 @@
+> 需要更新
+
 # 常见问题
+
+> 对应 TensorFlow 官方文档底部的更新日期：
 
 此文档对关于TensorFlow的一些常见问题提供了答案，如果这里没有你问题的答案，你可能会在[社区资源](tensorflow-zh/SOURCE/resoreces/index.md)中找到它。
 

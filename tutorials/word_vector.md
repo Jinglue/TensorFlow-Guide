@@ -1,5 +1,8 @@
+> 需要更新
+
 # Vector Representations of Words
 
+> 对应 TensorFlow 官方文档底部的更新日期：
 
 在本教程我们来看一下[Mikolov et al](http://papers.nips.cc/paper/5021-distributed-representations-of-words-and-phrases-and-their-compositionality.pdf)中提到的word2vec模型。该模型是用于学习文字的向量表示，称之为“word embedding”。
 
