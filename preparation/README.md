@@ -1,5 +1,7 @@
 # 准备工作
 
+> 原文链接：[Install](https://www.tensorflow.org/install/)
+
 > 对应 TensorFlow 官方文档底部的更新日期：十一月 3, 2017
 
 我们已在以下笔记本/桌面电脑的 64 位操作系统上构建并测试了 TensorFlow：
