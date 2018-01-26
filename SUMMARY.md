@@ -1,6 +1,9 @@
 # Summary
 * [准备工作](preparation/README.md)
-	* [安装 TensorFlow](preparation/installation.md)
+	* [为 Ubuntu 安装 TensorFlow](preparation/installation_ubuntu.md)
+	* [为 macOS 安装 TensorFlow](preparation/installation_macos.md)
+	* [为 Windows 安装 TensorFlow](preparation/installation_windows.md)
+	* [从源码安装 TensorFlow](preparation/installation_sources.md)
 * [开始使用](get_started/README.md)
 	* [TensorFlow 使用入门](get_started/tf_intro.md)
 	* [面向机器学习新手的 MNIST](get_started/mnist_for_beginners.md)
