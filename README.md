@@ -4,7 +4,9 @@
 
 TensorFlow 文档原版来自：[TensorFlow 官方文档](https://www.tensorflow.org)。
 
-针对目前流行汉化文档版本落后的问题发起本项目。使用 MathJax 支持数学公式渲染。
+针对目前流行汉化文档版本落后的问题，景略集智发起本项目。
+
+通过 Gitbook 的 [MathJax 插件](https://github.com/GitbookIO/plugin-mathjax)，支持数学公式渲染。
 
 ## 须知
 
