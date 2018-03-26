@@ -1,6 +1,7 @@
 # 为 Windows 安装 TensorFlow
 
-> 对应 TensorFlow 官方文档底部的更新日期：一月 4, 2018
+> 官方最新版本：三月 9, 2018
+> 本文对应版本：一月 4, 2018
 
 > 本页面内容从[为 Ubuntu 安装 TensorFlow](installation_ubuntu.md) 直接复制并修改，如有纰漏请指出
 

@@ -27,7 +27,8 @@ H1 标题下方，须用引用级别注明翻译对应的官方文档更新日�
 
 > 原文链接：[Programmer's Guide](https://www.tensorflow.org/programmers_guide/)
 
-> 对应 TensorFlow 官方文档底部的更新日期：十一月 3, 2017
+> 官方最新版本：三月 9, 2018
+> 本文对应版本：一月 4, 2018
 
 ### 数学公式
 
