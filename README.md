@@ -10,6 +10,12 @@ TensorFlow 文档原版来自：[TensorFlow 官方文档](https://www.tensorflow
 
 开始阅读：[TensorFlow 文档中文版](https://jinglue.gitbooks.io/tensorflow-guide/content/)
 
+## 如何使用
+
+### 阅读
+
+开始阅读：[TensorFlow 文档中文版](https://jinglue.gitbooks.io/tensorflow-guide/content/)
+
 ## 如何参与
 
 ### 目录
