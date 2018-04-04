@@ -8,8 +8,6 @@ TensorFlow 文档原版来自：[TensorFlow 官方文档](https://www.tensorflow
 
 项目同时托管在 [Gitbook](https://www.gitbook.com/book/jinglue/tensorflow-guide/details) 和 [GitHub](https://github.com/Jinglue/TensorFlow-Guide) 上，实时同步。
 
-开始阅读：[TensorFlow 文档中文版](https://jinglue.gitbooks.io/tensorflow-guide/content/)
-
 ## 如何使用
 
 ### 阅读
