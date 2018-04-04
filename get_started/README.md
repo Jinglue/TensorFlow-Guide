@@ -2,7 +2,8 @@
 
 > 原文链接：[Get Started](https://www.tensorflow.org/get_started/)
 
-> 对应 TensorFlow 官方文档底部的更新日期：八月 31, 2017
+> 官方最新版本：三月 30, 2018  
+> 本文对应版本：八月 31, 2017
 
 如需大致了解 TensorFlow 编程基础知识，请参阅以下指南：
 

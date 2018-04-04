@@ -1,9 +1,9 @@
 # 为 Windows 安装 TensorFlow
 
+> 原文链接：[Installing TensorFlow on Windows](https://www.tensorflow.org/install/install_windows)
+
 > 官方最新版本：三月 9, 2018  
 > 本文对应版本：一月 4, 2018
-
-> 本页面内容从[为 Ubuntu 安装 TensorFlow](installation_ubuntu.md) 直接复制并修改，如有纰漏请指出
 
 本教程将指导你如何在 Windows 上安装 TensorFlow。
 
