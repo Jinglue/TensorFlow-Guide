@@ -1,5 +1,5 @@
-> 尚未翻译
-
 # 从源码安装 TensorFlow
 
-> 对应 TensorFlow 官方文档底部的更新日期：
+> 原文链接：[Installing TensorFlow from Sources](https://www.tensorflow.org/install/install_sources)
+
+> 官方最新版本：三月 2, 2018

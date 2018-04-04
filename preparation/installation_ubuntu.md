@@ -1,5 +1,7 @@
 # 为 Ubuntu 安装 TensorFlow
 
+> 原文链接：[Installing TensorFlow on Ubuntu](https://www.tensorflow.org/install/install_linux)
+
 > 官方最新版本：三月 9, 2018  
 > 本文对应版本：一月 4, 2018
 
