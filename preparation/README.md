@@ -3,13 +3,13 @@
 > 原文链接：[Install](https://www.tensorflow.org/install/)
 
 > 官方最新版本：三月 9, 2018  
-> 本文对应版本：一月 4, 2018
+> 本文对应版本：三月 9, 2018
 
 我们已在以下笔记本/桌面电脑的 64 位操作系统上构建并测试了 TensorFlow：
 
-MacOS X 10.11 (El Capitan) 或更高版本。  
-Ubuntu 14.04 或更高版本。  
-Windows 7 或更高版本。
+* acOS X 10.11 (El Capitan) 或更高版本。  
+* Ubuntu 16.04 或更高版本。    
+* Windows 7 或更高版本。  
 
 也许你希望 TensorFlow 能在其他操作系统上安装，但我们只在上述的配置中提供支持并修复问题。
 
