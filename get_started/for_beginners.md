@@ -1,4 +1,4 @@
-# 机器学习初学者用初始教程
+# 预制评估器：适合机器学习初学者
 
 > 原文链接：[Premade Estimators for ML Beginners](https://www.tensorflow.org/get_started/get_started_for_beginners)
 
@@ -24,10 +24,7 @@
 * 弗吉尼亚鸢尾花（Iris virginica）
 * 变色鸢尾（Iris versicolor）
 
-![Iris](https://www.tensorflow.org/images/iris_three_species.jpg)
-
-**From left to right, Iris setosa (by Radomil, CC BY-SA 3.0), Iris versicolor (by Dlanglois, CC BY-SA 3.0), and Iris virginica (by Frank Mayfield, CC BY-SA 2.0).**
-
+![From left to right, Iris setosa (by Radomil, CC BY-SA 3.0), Iris versicolor (by Dlanglois, CC BY-SA 3.0), and Iris virginica (by Frank Mayfield, CC BY-SA 2.0).](images/for_beginners_1.jpg)
 
 
 好在已经有人创建了[120种鸢尾花数据集](https://en.wikipedia.org/wiki/Iris_flower_data_set)，包含萼片和花瓣的测度。该数据集是机器学习分类问题的入门典范。（[MNIST database](https://en.wikipedia.org/wiki/MNIST_database)  这一包含手写数字的数据集则是另一个典型）。该鸢尾花数据集的前5项如下：
