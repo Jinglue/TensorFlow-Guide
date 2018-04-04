@@ -8,7 +8,15 @@ TensorFlow 文档原版来自：[TensorFlow 官方文档](https://www.tensorflow
 
 项目同时托管在 [Gitbook](https://www.gitbook.com/book/jinglue/tensorflow-guide/details) 和 [GitHub](https://github.com/Jinglue/TensorFlow-Guide) 上，实时同步。
 
-## 目录
+## 如何使用
+
+### 阅读
+
+开始阅读：[TensorFlow 文档中文版](https://jinglue.gitbooks.io/tensorflow-guide/content/)
+
+## 如何参与
+
+### 目录
 
 章节和文件的具体对应关系，请查看 SUMMARY.md 文件原文。
 
@@ -19,9 +27,9 @@ TensorFlow 文档原版来自：[TensorFlow 官方文档](https://www.tensorflow
 | 编程指南 | programmer_guide | [Programmer's Guide](https://www.tensorflow.org/programmers_guide/) |
 | 教程   | tutorials        | [Tutorials](https://www.tensorflow.org/tutorials/) |
 
-## 须知
+### 须知
 
-### 日期注明
+#### 日期注明
 
 H1 标题下方，须用引用级别注明翻译对应的官方文档更新日期，比如：
 
@@ -30,6 +38,6 @@ H1 标题下方，须用引用级别注明翻译对应的官方文档更新日�
 > 官方最新版本：三月 9, 2018  
 > 本文对应版本：一月 4, 2018
 
-### 数学公式
+#### 数学公式
 
 通过 Gitbook 的 [MathJax 插件](https://github.com/GitbookIO/plugin-mathjax)支持数学公式渲染。
